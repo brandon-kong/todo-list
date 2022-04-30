@@ -1,0 +1,16 @@
+{% if error %}
+<h2>{{error}}</h2>
+{% endif %}
+
+{% include "list/index.html" %}
+
+{% block content %}
+<form method="POST">
+    <fieldset>
+        {% csrf_token %}
+        <input type="text" name="text" placeholder="Enter Todo Item">
+        <br>
+        <button type="submit">Submit</button>
+    </fieldset>
+</form>
+{% endblock %}

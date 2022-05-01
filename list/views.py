@@ -63,3 +63,6 @@ def getListFromUser(request, id):
 def canEditList(list, user):
     if list.author == user:
         return True
+
+def deletelist(request, id):
+    return HttpResponse(request.POST['text'])

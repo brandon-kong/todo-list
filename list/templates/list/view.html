@@ -1,4 +1,21 @@
 {% extends 'list/layout.html' %}
+{% load static %}
+
+{% block head %}
+<script>
+    function onClick(){
+        $.ajax({
+            type: "POST",
+            url: "{% url 'deletelist' obj.id %}",
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}',
+                text: "hi" },   /* Passing the text data */
+                success:  function(response){
+                    alert('sup');
+                }
+        });
+    }
+</script>
+{% endblock %}
 
 {% block content %}
 {% if obj %}
@@ -16,10 +33,10 @@
             {% csrf_token %}
             <input type="text" name="text" placeholder="Enter Todo Item">
             <br>
-            <button type="submit" id='deltBtn'>Submit</button>
+            <button type="submit">Submit</button>
         </fieldset>
     </form>
-    <button>Delete List</button>
+    <button id="deltBtn" onclick="onClick()">Delete List</button>
     {% endif %}
 {% endif %}
 {% endblock %}

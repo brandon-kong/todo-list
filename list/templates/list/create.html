@@ -1,14 +1,17 @@
-{% if error %}
-<h2>{{error}}</h2>
-{% endif %}
+{% extends 'list/layout.html' %}
 
-{% include "list/index.html" %}
+{% block top %}
+    {% if error %}
+    <h2>{{error}}</h2>
+    {% endif %}
+{% endblock %}
 
 {% block content %}
+<h1>Create List</h1>
 <form method="POST">
     <fieldset>
         {% csrf_token %}
-        <input type="text" name="text" placeholder="Enter Todo Item">
+        <input type="text" name="text" placeholder="Enter List Name">
         <br>
         <button type="submit">Submit</button>
     </fieldset>

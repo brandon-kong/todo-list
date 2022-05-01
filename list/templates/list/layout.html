@@ -1,0 +1,19 @@
+{% load static %}
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static '/css/layout.css' %}">
+    </head>
+    <body>
+        {% block top %}
+        {% endblock %}
+        
+        <nav class="topbar">
+            <a href="/create">Create list</a>
+            <a href="{% url 'user' user.id %}">Your lists</a>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

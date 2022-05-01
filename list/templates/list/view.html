@@ -1,0 +1,25 @@
+{% extends 'list/layout.html' %}
+
+{% block content %}
+{% if obj %}
+    <h1>{{obj.title}}</h1>
+    <ul>
+        {% for i in items %}
+            <li>
+                {{i.text}}
+            </li>
+        {% endfor %}
+    </ul>
+    {% if canEdit %}
+    <form method="POST">
+        <fieldset>
+            {% csrf_token %}
+            <input type="text" name="text" placeholder="Enter Todo Item">
+            <br>
+            <button type="submit" id='deltBtn'>Submit</button>
+        </fieldset>
+    </form>
+    <button>Delete List</button>
+    {% endif %}
+{% endif %}
+{% endblock %}

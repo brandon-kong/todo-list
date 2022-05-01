@@ -1,0 +1,12 @@
+{% extends 'list/layout.html' %}
+
+{% block content %}
+    {% if lists %}
+        <ul>
+        {% for i in lists %}
+            <a href="{% url 'view' i.id %}">{{i.title}}</a>
+            <br>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
